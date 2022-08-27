@@ -39,7 +39,8 @@ how to build a simple mint page of ERC721 SmartContract
   Connect it with React app 
   
   *Requirement 
-    need Ether.JS / Web3.Js 
+  
+    need Ether.JS / Web3.Js
     need ContractAddress 
 
     *optional 
