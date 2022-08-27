@@ -4,7 +4,7 @@ how to build a simple mint page of ERC721 SmartContract
 
 # Road map of NFT-Architecture 
 
-# 1 
+# 1 NFT Storage/Uploading
     Upload NFT using NFT.Storage ( NFTUPs )
     
     Website : https://nft.storage/
@@ -13,7 +13,7 @@ how to build a simple mint page of ERC721 SmartContract
     *Requirement 
      NFTUPs require a API-key, and you can get the api key after signing in the NFT.Storage
 
-# 2 
+# 2 SmartContract Developing & Deploying
     Develop and Deploy SmartContract 
     
     1. Name and Symbol 
@@ -35,7 +35,7 @@ how to build a simple mint page of ERC721 SmartContract
 
 
 
-# 3 
+# 3 Connecting with ReactApp
   Connect it with React app 
   
   *Requirement 
