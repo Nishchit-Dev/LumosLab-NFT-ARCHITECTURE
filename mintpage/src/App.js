@@ -26,6 +26,8 @@ const App = () => {
   const [provider, setProvider] = useState(null);
   const [signer, setSigner] = useState(null);
   const [login, setLogin] = useState(null);
+  const [totalSupply,setTotalSupply] = useState(0);
+  const [quantity,setQuantity] = useState(1);
 
   useEffect(() => {
     const task = async () => {
@@ -59,13 +61,24 @@ const App = () => {
     });
   }, [signer]);
 
+  const updateQuantity =(flag)=>{
+
+    if(flag){
+      if(quantity < 15)
+      setQuantity(quantity+1);
+    }else{
+      if(quantity > 1 )
+      setQuantity(quantity-1);
+    }
+
+  }
+
+
   return (
     <MainSectionContainer style={{ flexDirection: "column" }}>
       <CenterContainer>
         <BackGroundImage src={background} />
       </CenterContainer>
-
-     
 
       <Flex
         style={{
@@ -77,7 +90,7 @@ const App = () => {
         <CenterContainer style={{ alignContent: "center" }}>
           <Flex style={{ padding: "20px 30px" }}>
             <Container>
-              <Flex style={{  padding: "20px 50px",flexDirection: "column", alignContent: "center" ,backdropFilter:'blur(10px)',background:'rgba(184, 184, 184, 0.17)' }}>
+              <Flex style={{ padding: "20px 50px",flexDirection: "column", alignContent: "center" ,backdropFilter:'blur(10px)',background:'rgba(184, 184, 184, 0.17)' }}>
                 <CenterContainer>
                   <ContentBlurLess style={{fontSize:'25px'}}>Quantity</ContentBlurLess>
                 </CenterContainer>
@@ -85,19 +98,19 @@ const App = () => {
                 <Flex style={{alignItems:'center'}}>
                 <div>
                     <CenterContainer>
-                  <Content style={{color:'white',background:'black'}}>-</Content>
+                  <Content style={{color:'white',background:'black'}} onClick={()=>updateQuantity(false)}>-</Content>
 
                     </CenterContainer>
                   </div>
-                  {/* <Content style={{color:'white',background:'black'}}>-</Content> */}
-                  <ContentBlurLess style={{color:'white',fontSize:'120px',fontWeight:'800'}}>15</ContentBlurLess>
+               
+                  <ContentBlurLess style={{color:'white',fontSize:'120px',fontWeight:'800'}} >{quantity}</ContentBlurLess>
                   <div>
                     <CenterContainer>
-                  <Content style={{color:'white',background:'black'}}>+</Content>
+                  <Content style={{color:'white',background:'black'}} onClick={()=>{updateQuantity(true)}}>+</Content>
 
                     </CenterContainer>
                   </div>
-                  {/* <Content  style={{color:'white',background:"black"}}>+</Content> */}
+                
                 </Flex>
 
                 <CenterContainer>
@@ -113,7 +126,7 @@ const App = () => {
                 </CenterContainer>
 
                 <CenterContainer>
-                <ContentBlurLess style={{fontSize:'35px',color:'white'}}>100<p style={{color:'black'}}>{" "}/10k</p></ContentBlurLess>
+                <ContentBlurLess style={{fontSize:'35px',color:'white'}}>100<p style={{color:'black'}}>/10k</p></ContentBlurLess>
                 </CenterContainer>
 
                 <CenterContainer style={{padding:'40px 0 0 0'}}>
