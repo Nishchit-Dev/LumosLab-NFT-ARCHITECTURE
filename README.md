@@ -47,4 +47,11 @@ how to build a simple mint page of ERC721 SmartContract
       if you want other provider like Alchemy/Infura you can vist their websites 
 
 
+# Glance at Ui 
+![image](https://user-images.githubusercontent.com/83442510/187090775-050f1916-4da6-406f-bbc1-c6d2fab33251.png)
+
+
+
+
+
     
