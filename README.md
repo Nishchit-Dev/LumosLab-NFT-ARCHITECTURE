@@ -48,7 +48,13 @@ how to build a simple mint page of ERC721 SmartContract
 
 
 # Glance at Ui 
+
+# Desktop
 ![image](https://user-images.githubusercontent.com/83442510/187090775-050f1916-4da6-406f-bbc1-c6d2fab33251.png)
+
+# Mobile 
+![ui](https://user-images.githubusercontent.com/83442510/187090832-02e49807-3fe5-4f6a-b73e-19eff8c30229.jpeg)
+
 
 
 
