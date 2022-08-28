@@ -1,25 +1,134 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import {
+  getProvider,
+  getSigner,
+  getTotalSupply,
+  getAddress,
+  setContract,
+} from "./Component/Ether";
+import {
+  CenterContainer,
+  Container,
+  Button,
+  MainSectionContainer,
+  Flex,
+  Block,
+  Content,
+  BackGroundImage,
+  ContentBlurLess
+} from "./generalStyledComponent/general.style";
+import "./index.css";
+import background from "./resource/PixelverseBackground.jpg";
 
-function App() {
+const App = () => {
+  const [contract, _setContract] = useState(null);
+  const [walletAddress, setWalletAddress] = useState(null);
+  const [provider, setProvider] = useState(null);
+  const [signer, setSigner] = useState(null);
+  const [login, setLogin] = useState(null);
+
+  useEffect(() => {
+    const task = async () => {
+      await getAddress().then((res) => {
+        setWalletAddress(res);
+        console.log("getting address");
+      });
+      console.log("got address");
+
+      await getProvider().then((res) => {
+        setProvider(res);
+        console.log("getting provider");
+      });
+      console.log("got provider");
+
+      await getSigner().then((res) => {
+        setSigner(res);
+        console.log("getting singer");
+      });
+      console.log("got signer");
+    };
+
+    task();
+
+    // setContract().then()
+  }, []);
+
+  useEffect(() => {
+    setContract(signer).then((res) => {
+      _setContract(res);
+    });
+  }, [signer]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainSectionContainer style={{ flexDirection: "column" }}>
+      <CenterContainer>
+        <BackGroundImage src={background} />
+      </CenterContainer>
+
+     
+
+      <Flex
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CenterContainer style={{ alignContent: "center" }}>
+          <Flex style={{ padding: "20px 30px" }}>
+            <Container>
+              <Flex style={{  padding: "20px 50px",flexDirection: "column", alignContent: "center" ,backdropFilter:'blur(10px)',background:'rgba(184, 184, 184, 0.17)' }}>
+                <CenterContainer>
+                  <ContentBlurLess style={{fontSize:'25px'}}>Quantity</ContentBlurLess>
+                </CenterContainer>
+
+                <Flex style={{alignItems:'center'}}>
+                <div>
+                    <CenterContainer>
+                  <Content style={{color:'white',background:'black'}}>-</Content>
+
+                    </CenterContainer>
+                  </div>
+                  {/* <Content style={{color:'white',background:'black'}}>-</Content> */}
+                  <ContentBlurLess style={{color:'white',fontSize:'120px',fontWeight:'800'}}>15</ContentBlurLess>
+                  <div>
+                    <CenterContainer>
+                  <Content style={{color:'white',background:'black'}}>+</Content>
+
+                    </CenterContainer>
+                  </div>
+                  {/* <Content  style={{color:'white',background:"black"}}>+</Content> */}
+                </Flex>
+
+                <CenterContainer>
+                <ContentBlurLess style={{fontSize:'25px'}}>Price</ContentBlurLess>
+                </CenterContainer>
+
+                <CenterContainer>
+                <ContentBlurLess style={{fontSize:'35px',color:'white'}}>10<p style={{color:'black'}}>{" "}ETH</p></ContentBlurLess>
+                </CenterContainer>
+
+                <CenterContainer>
+                <ContentBlurLess style={{fontSize:'25px'}}>Minted</ContentBlurLess>
+                </CenterContainer>
+
+                <CenterContainer>
+                <ContentBlurLess style={{fontSize:'35px',color:'white'}}>100<p style={{color:'black'}}>{" "}/10k</p></ContentBlurLess>
+                </CenterContainer>
+
+                <CenterContainer style={{padding:'40px 0 0 0'}}>
+                  <Button style={{background:'black',color:'white'}}>
+                    Mint
+                  </Button>
+                </CenterContainer>
+                
+              </Flex>
+            </Container>
+          </Flex>
+        </CenterContainer>
+      </Flex>
+    </MainSectionContainer>
   );
-}
+};
 
 export default App;
