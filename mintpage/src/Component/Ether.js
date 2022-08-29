@@ -43,3 +43,14 @@ export const getTotalSupply = async(contract)=>{
         return err
     })
 }
+
+export const _Mint = async(contract,quantity)=>{
+  let price = 0.002*quantity;
+  let option = {
+    value:ethers.utils.parseEther(price.toString())
+  }
+  return await contract.mint(quantity,option).then(res=>{
+    console.log(res)
+    return res
+  })
+}
